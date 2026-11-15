@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REditor - Live Demo (GitHub Pages)</title>
+    <!-- Editor Bundle CSS -->
+    <link rel="stylesheet" href="reditor/reditor.bundle.css">
+    <!-- Tailwind CSS for Layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; background: #f0f0f1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; overflow: hidden; }
+        .demo-header { height: 60px; background: #0f172a; display: flex; align-items: center; padding: 0 20px; justify-content: space-between; color: white; border-bottom: 1px solid #1e293b; }
+        .demo-wrapper { height: calc(100vh - 60px); display: flex; flex-direction: column; overflow: hidden; position: relative; }
+        #reditor-app { flex: 1; height: 100%; overflow-y: auto; }
+        .editor-editor-interface.edit-post-layout.is-mode-visual.re-layout.has-footer { left: 0 !important; right: 0 !important; top: 0 !important; bottom: 0 !important; position: absolute !important; }
+        .is-fullscreen-mode #reditor-app { left: 0 !important; right: 0 !important; top: 0 !important; bottom: 0 !important; position: absolute !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Demo Top Bar -->
+    <div class="demo-header">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white text-sm">R</div>
+            <span class="font-bold text-lg tracking-tight">REditor Live Preview</span>
+            <span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded border border-green-500/30">Static / Mock Mode Active</span>
+        </div>
+        <div class="text-sm text-slate-400">
+            Framework-Agnostic Visual Block Builder
+        </div>
+    </div>
+
+    <!-- Editor Container -->
+    <div class="demo-wrapper">
+        <div id="reditor-app"></div>
+    </div>
+
+    <!-- React Dependencies -->
+    <script src="reditor/vendor/react.production.min.js"></script>
+    <script src="reditor/vendor/react-dom.production.min.js"></script>
+
+    <!-- Main Editor Bundle -->
+    <script type="module">
+        // 1. Mock Templates Data
+        const mockTemplates = [
+            {
+                "category": "Hero Sections",
+                "items": [
+                    {
+                        "id": 101,
+                        "slug": "hero-modern",
+                        "title": "Modern Hero",
+                        "description": "Dark themed modern hero section",
+                        "content": "<!-- re:html-convert --><div style=\"background:#0f172a; color:#fff; padding:80px 20px; text-align:center; border-radius:12px;\">\n    <h1 style=\"font-size:3rem; margin-bottom:20px; font-weight:bold;\">Welcome to REditor</h1>\n    <p style=\"font-size:1.2rem; color:#94a3b8; max-width:600px; margin:0 auto 30px;\">This template was added via drag and drop. Fully customizable.</p>\n    <button style=\"background:#3b82f6; color:#fff; border:none; padding:12px 24px; border-radius:6px; font-size:1rem; cursor:pointer;\">Get Started</button>\n</div><!-- /re:html-convert -->"
+                    }
+                ]
+            }
+        ];
+
+        // 2. Mock Media Library Data
+        const mockMediaData = [
+            { id: 1001, url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=300&q=80", mime_type: "image/jpeg", title: "Mountain Landscape" },
+            { id: 1002, url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&q=80", mime_type: "image/jpeg", title: "Modern Office" },
+            { id: 1003, url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&q=80", mime_type: "image/jpeg", title: "Software Development" }
+        ];
+
+        // 3. Initial Content
+        const initialContent = `
+<!-- re:heading {"level":1} -->
+<h1 class="re-block-heading">Welcome to REditor Live Demo</h1>
+<!-- /re:heading -->
+
+<!-- re:paragraph -->
+<p>You can test all REditor features right here in this browser demo. Add blocks from the top-left menu, explore templates, or open the right sidebar media library to pick images.</p>
+<!-- /re:paragraph -->
+
+<!-- re:image {"width":"100%","align":"center","borderRadius":12} -->
+<figure class="re-block-image aligncenter" style="width: 100%; margin: 0 auto; border-radius: 12px;">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80" alt="Workspace" style="display: block; width: 100%; border-radius: 12px; object-fit: cover;">
+</figure>
+<!-- /re:image -->
+        `;
+
+        // Create Blob URLs to simulate endpoints safely on GitHub Pages
+        const mediaBlob = new Blob([JSON.stringify({ current_page: 1, last_page: 1, data: mockMediaData })], {type: 'application/json'});
+        const mediaUrl = URL.createObjectURL(mediaBlob);
+
+        const templatesBlob = new Blob([JSON.stringify(mockTemplates)], {type: 'application/json'});
+        const templatesUrl = URL.createObjectURL(templatesBlob);
+
+        // Initialize REditor using standard boot setup with Mock backends
+        REditor.boot('#reditor-app', {
+            lang: "en",
+            assetsBaseUrl: "public",
+            currentUserId: 1,
+            showLogo: true,
+            titleMode: "inline",
+            contentType: "page",
+            initialTitle: "REditor Live Demo",
+            initialContent: initialContent,
+            saveFormat: "both",
+            templatesUrl: templatesUrl,
+            draftMode: false,
+            previewMode: false,
+            media: {
+                useRealBackend: true,
+                apiEndpoints: {
+                    list: mediaUrl,
+                    upload: "",
+                    delete: "",
+                    update: ""
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
