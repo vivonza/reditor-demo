@@ -40,10 +40,7 @@
     <script src="reditor/vendor/react.production.min.js"></script>
     <script src="reditor/vendor/react-dom.production.min.js"></script>
 
-    <!-- 💡 EDİTÖRÜN ANA BUNDLE DOSYASI (Eksik olan ve REditor nesnesini tanımlayan dosya) -->
-    <script type="module" src="reditor/reditor.bundle.js"></script>
-
-    <!-- Main Editor Initialization -->
+    <!-- Main Editor Bundle -->
     <script type="module">
         // 1. Mock Templates Data
         const mockTemplates = [
@@ -93,30 +90,27 @@
         const templatesUrl = URL.createObjectURL(templatesBlob);
 
         // Initialize REditor using standard boot setup with Mock backends
-        window.addEventListener('DOMContentLoaded', () => {
-            REditor.boot('#reditor-app', {
-                lang: "en",
-                assetsBaseUrl: "public",
-                currentUserId: 1,
-                showLogo: true,
-                titleMode: "inline",
-                contentType: "page",
-                initialTitle: "REditor Live Demo",
-                initialContent: initialContent,
-                saveFormat: "both",
-                templatesUrl: templatesUrl,
-                draftMode: false,
-                previewMode: false,
-                media: {
-                    useRealBackend: true,
-                    apiEndpoints: {
-                        list: mediaUrl,
-                        upload: "",
-                        delete: "",
-                        update: ""
-                    }
-                }
-            });
+        REditor.boot('#reditor-app', {
+            lang: "en",
+            assetsBaseUrl: "public",
+            currentUserId: 1,
+            showLogo: true,
+            titleMode: "inline",
+            contentType: "page",
+            initialTitle: "REditor Live Demo",
+            initialContent: initialContent,
+            saveFormat: "both",
+            templatesUrl: templatesUrl,
+            draftMode: false,
+            previewMode: false,
+            media: {
+                useRealBackend: false, 
+                items: [              
+                    { id: 1001, url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=300&q=80", mime_type: "image/jpeg", title: "Mountain Landscape" },
+                    { id: 1002, url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&q=80", mime_type: "image/jpeg", title: "Modern Office" },
+                    { id: 1003, url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&q=80", mime_type: "image/jpeg", title: "Software Development" }
+                ]
+            }
         });
     </script>
 
