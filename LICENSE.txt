@@ -1,0 +1,30 @@
+REditor - Commercial License Agreement
+=========================================
+Copyright (c) 2026, ahs. All rights reserved.
+
+By purchasing and downloading REditor, you are granted a non-exclusive, non-transferable license to use the software based on the license tier you purchased.
+
+1. STANDARD LICENSE
+-------------------
+If you purchased the Standard License, you are granted the right to use REditor in ONE (1) single end product for yourself or for one client (e.g., a single website, a single internal CMS).
+- YOU MAY: Use the compiled (`dist`) files in your commercial project.
+- YOU MAY NOT: Distribute the source code.
+- YOU MAY NOT: Use the software in a SaaS platform where multiple end-users pay to access the editor.
+- YOU MAY NOT: Create a derivative product that competes directly with REditor (e.g., selling a page builder plugin).
+
+2. DEVELOPER / EXTENDED LICENSE
+-------------------
+If you purchased the Developer License, you are granted the right to use REditor in MULTIPLE end products, including SaaS applications, premium themes, and commercial CMS platforms.
+- YOU MAY: Modify the raw source code (`src` files) to fit your specific needs.
+- YOU MAY: Use the editor across unlimited projects for unlimited clients.
+- YOU MAY: Integrate the editor into a SaaS product where end-users are charged.
+- YOU MAY NOT: Resell, redistribute, or license the REditor source code AS IS.
+- YOU MAY NOT: Extract the editor and offer it as a standalone open-source or commercial "Page Builder" tool to directly compete with REditor.
+
+3. OWNERSHIP & INTELLECTUAL PROPERTY
+-------------------
+You may not claim intellectual or exclusive ownership to any of our products, modified or unmodified. All products remain the property of Ahmet Haşim Sekban.
+
+4. WARRANTY & LIABILITY
+-------------------
+The software is provided "AS IS", without warranty of any kind, express or implied. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability arising from, out of, or in connection with the software.
