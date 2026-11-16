@@ -5,7 +5,21 @@
 **REditor** (Rapid, Responsive, Reliable) is a modern visual block editor and page builder designed to bridge the gap between heavy, ecosystem-locked editors (like WordPress Gutenberg) and non-visual JSON-based editors (like Editor.js). Built with a pure ES6 JavaScript core and an isolated `iframe` canvas, it integrates into any backend language (PHP, Node.js, Python, Go) or frontend framework (Laravel, WordPress, Vue, React) in minutes.
 
 ---
+<div align="center">
 
+  <img src="assets/preview.gif" alt="REditor Preview" width="100%" style="border-radius: 12px; margin-bottom: 20px;">
+
+  # REditor
+  
+  **A lightweight, framework-agnostic visual block editor built with pure ES6 JavaScript and an isolated iframe canvas.**
+
+  [![Live Demo](https://img.shields.io/badge/🚀_Live-Demo-blue?style=for-the-badge)](https://vivonza.github.io/reditor-demo/)
+  [![GitHub License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+  [![Gumroad Pro](https://img.shields.io/badge/Gumroad-Standard_%26_Extended-purple?style=for-the-badge)](https://mockpackstudio.gumroad.com/l/reditor)
+
+</div>
+
+---
 ## 📑 Table of Contents
 
 - [Key Features](#-key-features)
