@@ -7,7 +7,7 @@
 ---
 <div align="center">
 
-  <img src="assets/preview.gif" alt="REditor Preview" width="100%" style="border-radius: 12px; margin-bottom: 20px;">
+  <img src="images/reditor3.png" alt="REditor Preview" width="100%" style="border-radius: 12px; margin-bottom: 20px;">
 
   # REditor
   
