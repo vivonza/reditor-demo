@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REditor - Live Demo (GitHub Pages)</title>
+    <title>REditor - Lightweight Visual Block Editor</title>
     <!-- Editor Bundle CSS -->
     <link rel="stylesheet" href="reditor/reditor.bundle.css">
     <!-- Tailwind CSS for Layout -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body, html { margin: 0; padding: 0; height: 100%; background: #f0f0f1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; overflow: hidden; }
-        .demo-header { height: 60px; background: #0f172a; display: flex; align-items: center; padding: 0 20px; justify-content: space-between; color: white; border-bottom: 1px solid #1e293b; }
-        .demo-wrapper { height: calc(100vh - 60px); display: flex; flex-direction: column; overflow: hidden; position: relative; }
+        .demo-header { height: 65px; background: #0f172a; display: flex; align-items: center; padding: 0 20px; justify-content: space-between; color: white; border-bottom: 1px solid #1e293b; z-index: 50; }
+        .demo-wrapper { height: calc(100vh - 65px); display: flex; flex-direction: column; overflow: hidden; position: relative; }
         #reditor-app { flex: 1; height: 100%; overflow-y: auto; }
         .editor-editor-interface.edit-post-layout.is-mode-visual.re-layout.has-footer { left: 0 !important; right: 0 !important; top: 0 !important; bottom: 0 !important; position: absolute !important; }
         .is-fullscreen-mode #reditor-app { left: 0 !important; right: 0 !important; top: 0 !important; bottom: 0 !important; position: absolute !important; }
@@ -19,19 +19,32 @@
 </head>
 <body>
 
-    <!-- Demo Top Bar -->
+    <!-- Landing & Action Top Bar -->
     <div class="demo-header">
         <div class="flex items-center gap-3">
-            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white text-sm">R</div>
-            <span class="font-bold text-lg tracking-tight">REditor Live Preview</span>
-            <span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded border border-green-500/30">Static / Mock Mode Active</span>
-        </div>
-        <div class="flex items-center gap-4">
-            <div class="text-sm text-slate-400 hidden md:block">
-                Framework-Agnostic Visual Block Builder
+            <div class="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center font-bold text-white text-base shadow-md">R</div>
+            <div>
+                <span class="font-bold text-lg tracking-tight block leading-none">REditor</span>
+                <span class="text-[10px] text-slate-400 font-medium">Framework-Agnostic Block Builder</span>
             </div>
-            <a href="https://mockpackstudio.gumroad.com/l/reditor" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition shadow-lg shadow-blue-500/25 flex items-center gap-2">
-                <span>🛒 Buy REditor</span>
+        </div>
+
+        <!-- İndirme ve Satın Alma Seçenekleri (Aksiyon Alanı) -->
+        <div class="flex items-center gap-3">
+            <!-- 1. GitHub Ücretsiz İndir (Dist) -->
+            <a href="https://github.com/vivonza/Reditor" target="_blank" class="hidden sm:flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2 rounded-lg border border-slate-700 transition">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>Free (GitHub)</span>
+            </a>
+
+            <!-- 2. Standard Lisans ($39) -->
+            <a href="https://mockpackstudio.gumroad.com/l/reditor" target="_blank" class="hidden md:flex items-center gap-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2 rounded-lg border border-slate-700 transition">
+                <span>Standard ($39)</span>
+            </a>
+
+            <!-- 3. Extended / Pro Satın Al ($199) - Ana Vurgu -->
+            <a href="https://mockpackstudio.gumroad.com/l/reditor" target="_blank" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition shadow-lg shadow-blue-500/25">
+                <span>⚡ Buy Extended ($199)</span>
             </a>
         </div>
     </div>
@@ -47,7 +60,7 @@
     <script type="module" src="reditor/reditor.bundle.js"></script>
     <!-- Main Editor Bundle -->
     <script type="module">
-        // 1. Mock Templates Data
+        // Mock Templates
         const mockTemplates = [
             {
                 "category": "Hero Sections",
@@ -63,14 +76,14 @@
             }
         ];
 
-        // 2. Mock Media Library Data
+        // Mock Media Data
         const mockMediaData = [
             { id: 1001, url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=300&q=80", mime_type: "image/jpeg", title: "Mountain Landscape" },
             { id: 1002, url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&q=80", mime_type: "image/jpeg", title: "Modern Office" },
             { id: 1003, url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&q=80", mime_type: "image/jpeg", title: "Software Development" }
         ];
 
-        // 3. Initial Content
+        // Initial Content
         const initialContent = `
 <!-- re:heading {"level":1} -->
 <h1 class="re-block-heading">Welcome to REditor Live Demo</h1>
@@ -87,14 +100,13 @@
 <!-- /re:image -->
         `;
 
-        // Create Blob URLs to simulate endpoints safely on GitHub Pages
         const mediaBlob = new Blob([JSON.stringify({ current_page: 1, last_page: 1, data: mockMediaData })], {type: 'application/json'});
         const mediaUrl = URL.createObjectURL(mediaBlob);
 
         const templatesBlob = new Blob([JSON.stringify(mockTemplates)], {type: 'application/json'});
         const templatesUrl = URL.createObjectURL(templatesBlob);
 
-        // Initialize REditor using standard boot setup with Mock backends
+        // Initialize REditor
         REditor.boot('#reditor-app', {
             lang: "en",
             assetsBaseUrl: "public",
@@ -110,14 +122,11 @@
             previewMode: false,
             media: {
                 useRealBackend: false, 
-                items: [              
-                    { id: 1001, url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=300&q=80", mime_type: "image/jpeg", title: "Mountain Landscape" },
-                    { id: 1002, url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&q=80", mime_type: "image/jpeg", title: "Modern Office" },
-                    { id: 1003, url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80", thumbnail_url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&q=80", mime_type: "image/jpeg", title: "Software Development" }
-                ]
+                items: mockMediaData
             }
         });
 
+        // Mock Publish Handler
         const observer = new MutationObserver((mutations, obs) => {
             const publishBtn = document.querySelector('button#publish-btn, .re-button.is-primary');
             if (publishBtn && !publishBtn.dataset.mockBound) {
@@ -125,15 +134,12 @@
                 publishBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    alert("🎉 Mock Publish Successful!\n\nIn a real project, your content, title, and HTML blocks are successfully posted to your backend server.");
+                    alert("🎉 Mock Publish Successful!\n\nIn a real project, your content and HTML blocks are successfully posted to your backend server.");
                 });
             }
         });
 
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
+        observer.observe(document.body, { childList: true, subtree: true });
     </script>
 
 </body>
