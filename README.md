@@ -14,7 +14,7 @@
   **A lightweight, framework-agnostic visual block editor built with pure ES6 JavaScript and an isolated iframe canvas.**
 
   [![Live Demo](https://img.shields.io/badge/🚀_Live-Demo-blue?style=for-the-badge)](https://vivonza.github.io/reditor-demo/)
-  [![GitHub License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+  [![GitHub License]([https://img.shields.io/badge/License-MIT-green?style=for-the-badge](https://github.com/vivonza/reditor-demo/blob/main/LICENSE.txt))](LICENSE)
   [![Gumroad Pro](https://img.shields.io/badge/Gumroad-Standard_%26_Extended-purple?style=for-the-badge)](https://mockpackstudio.gumroad.com/l/reditor)
 
 </div>
