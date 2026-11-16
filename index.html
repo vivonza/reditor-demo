@@ -30,7 +30,6 @@
             <div class="text-sm text-slate-400 hidden md:block">
                 Framework-Agnostic Visual Block Builder
             </div>
-            <!-- Gumroad Satın Alma Butonu -->
             <a href="https://mockpackstudio.gumroad.com/l/reditor" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition shadow-lg shadow-blue-500/25 flex items-center gap-2">
                 <span>🛒 Buy REditor</span>
             </a>
@@ -119,7 +118,6 @@
             }
         });
 
-        // Editörün içindeki Publish butonuna tıklandığında simüle edilmiş POST işlemi (MutationObserver ile buton tespiti)
         const observer = new MutationObserver((mutations, obs) => {
             const publishBtn = document.querySelector('button#publish-btn, .re-button.is-primary');
             if (publishBtn && !publishBtn.dataset.mockBound) {
@@ -127,8 +125,6 @@
                 publishBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    
-                    // Kullanıcıya simülasyon bildirimi göster
                     alert("🎉 Mock Publish Successful!\n\nIn a real project, your content, title, and HTML blocks are successfully posted to your backend server.");
                 });
             }
