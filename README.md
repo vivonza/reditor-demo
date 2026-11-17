@@ -286,49 +286,119 @@ Configure custom document metadata fields in the right sidebar via `editorConfig
 Supported `inputType` values: `radio`, `select`, `textarea`, `slug`, `text`, `number`, `date`, `datetime-local`, and row-level `checkbox` / `toggle`.
 
 ```json
-{
+editorConfig: {
     "documentSettings": [
+        // 1. RADIO POPUP: Post Status
         {
             "id": "post_status",
-            "label": "Status",
+            "label": "Post Status",
             "type": "popup",
             "defaultValue": "draft",
             "popupId": "statusPopup",
             "hiddenInput": "#hidden_post_status",
+            "labels": {
+                "draft": "Draft",
+                "publish": "Published",
+                "pending": "Pending Review"
+            },
             "popupContent": {
                 "title": "Select Status",
                 "inputType": "radio",
+                "radioName": "post_status_popup",
                 "options": [
-                    { "value": "draft", "label": "Draft" },
-                    { "value": "publish", "label": "Published" }
+                    { "value": "draft", "label": "Draft", "desc": "Not ready to be published." },
+                    { "value": "pending", "label": "Pending Review", "desc": "Awaits editor approval before publishing." },
+                    { "value": "publish", "label": "Published", "desc": "Visible to everyone." }
                 ]
             }
         },
+        // 2. SLUG POPUP: Permalink (REditor Live Demo)
         {
             "id": "post_slug",
-            "label": "URL Slug",
+            "label": "Permalink",
             "type": "popup",
-            "defaultValue": "hello-world",
+            "defaultValue": "reditor-live-demo",
+            "popupId": "slugPopup",
             "hiddenInput": "#hidden_post_slug",
+            "buttonPrefix": "/",
             "popupContent": {
-                "title": "Permalink Slug",
+                "title": "URL Slug",
                 "inputType": "slug",
-                "baseUrl": "https://example.com/",
-                "description": "Customize the last part of the URL."
+                "inputName": "post_slug_popup",
+                "prefix": "/",
+                "baseUrl": "https://vivonza.github.io/reditor-demo/",
+                "description": "Customize the last part of the URL.",
+                "helpUrl": "https://wordpress.org/documentation/article/page-post-settings-sidebar/#permalink",
+                "helpText": "Learn more."
             }
         },
+        // 3. SELECT (DROPDOWN) POPUP: Category Selection
         {
             "id": "category_id",
             "label": "Category",
             "type": "popup",
+            "defaultValue": "1",
+            "popupId": "categoryPopup",
             "hiddenInput": "#hidden_category_id",
+            "labels": {
+                "1": "General",
+                "2": "UI Components",
+                "3": "Documentation"
+            },
             "popupContent": {
                 "title": "Select Category",
                 "inputType": "select",
-                "optionsUrl": "/api/v1/categories",
-                "valueKey": "id",
-                "labelKey": "name"
+                "inputName": "category_id_popup",
+                "description": "Choose the main category for this post.",
+                "options": [
+                    { "value": "1", "label": "General" },
+                    { "value": "2", "label": "UI Components" },
+                    { "value": "3", "label": "Documentation" }
+                ]
             }
+        },
+        // 4. TEXTAREA POPUP: Excerpt (SEO Meta)
+        {
+            "id": "post_excerpt",
+            "label": "Excerpt (SEO)",
+            "type": "popup",
+            "defaultValue": "",
+            "placeholder": "Write a short excerpt...",
+            "popupId": "excerptPopup",
+            "hiddenInput": "#hidden_post_excerpt",
+            "popupContent": {
+                "title": "Post Excerpt",
+                "inputType": "textarea",
+                "inputName": "post_excerpt_popup",
+                "rows": 4,
+                "placeholder": "Optional summary text...",
+                "description": "Enter a brief summary for search engines and archive pages."
+            }
+        },
+        // 5. DATETIME POPUP: Publish Date
+        {
+            "id": "published_at",
+            "label": "Publish Date",
+            "type": "popup",
+            "defaultValue": "2026-06-06T12:00",
+            "popupId": "datePopup",
+            "hiddenInput": "#hidden_published_at",
+            "popupContent": {
+                "title": "Publish Time",
+                "inputType": "datetime-local",
+                "inputName": "published_at_popup",
+                "description": "You can schedule the post by picking a future date."
+            }
+        },
+        // 6. DIRECT CHECKBOX: Feature / Showcase
+        {
+            "id": "is_featured",
+            "label": "Featured (Showcase)",
+            "type": "checkbox",
+            "defaultValue": "0",
+            "hiddenInput": "#hidden_is_featured",
+            "checkedValue": "1",
+            "uncheckedValue": "0"
         }
     ]
 }
