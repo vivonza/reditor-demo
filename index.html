@@ -120,6 +120,52 @@
             templatesUrl: templatesUrl,
             draftMode: false,
             previewMode: false,
+            
+    "documentSettings": [
+        {
+            "id": "post_status",
+            "label": "Status",
+            "type": "popup",
+            "defaultValue": "draft",
+            "popupId": "statusPopup",
+            "hiddenInput": "#hidden_post_status",
+            "popupContent": {
+                "title": "Select Status",
+                "inputType": "radio",
+                "options": [
+                    { "value": "draft", "label": "Draft" },
+                    { "value": "publish", "label": "Published" }
+                ]
+            }
+        },
+        {
+            "id": "post_slug",
+            "label": "URL Slug",
+            "type": "popup",
+            "defaultValue": "hello-world",
+            "hiddenInput": "#hidden_post_slug",
+            "popupContent": {
+                "title": "Permalink Slug",
+                "inputType": "slug",
+                "baseUrl": "https://example.com/",
+                "description": "Customize the last part of the URL."
+            }
+        },
+        {
+            "id": "category_id",
+            "label": "Category",
+            "type": "popup",
+            "hiddenInput": "#hidden_category_id",
+            "popupContent": {
+                "title": "Select Category",
+                "inputType": "select",
+                "optionsUrl": "/api/v1/categories",
+                "valueKey": "id",
+                "labelKey": "name"
+            }
+        }
+    ]
+,
             media: {
                 useRealBackend: false, 
                 items: mockMediaData
