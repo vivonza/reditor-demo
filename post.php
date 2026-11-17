@@ -4,7 +4,7 @@
  */
 function dd($data) {
     echo '<div style="background-color: #18171B; color: #56DB3A; padding: 20px; font-family: Menlo, Consolas, monospace; border-radius: 8px;">';
-    echo '<h3 style="color: #FF8400; border-bottom: 1px solid #333; padding-bottom: 10px;">📦 Gelen Form Verileri (Ayrı Ayrı)</h3>';
+    echo '<h3 style="color: #FF8400; border-bottom: 1px solid #333; padding-bottom: 10px;"> Incoming Form Data (Separately)</h3>';
     
     foreach ($data as $key => $value) {
         echo '<div style="margin-bottom: 15px; border-bottom: 1px dashed #444; padding-bottom: 10px;">';
@@ -13,11 +13,7 @@ function dd($data) {
         if (is_array($value)) {
             echo '<pre style="color: #00BFFF; margin-top: 5px;">' . htmlspecialchars(print_r($value, true)) . '</pre>';
         } else {
-            echo '<div style="color: #FFF; background:  max-width:100%;
-    overflow-wrap:anywhere;
-    word-break:break-word;
-    white-space:pre-wrap;
-    box-sizing:border-box; #222; padding: 10px; margin-top: 5px; border-radius: 4px;">';
+            echo '<div style="color: #FFF; background:  max-width:100%; overflow-wrap:anywhere; word-break:break-word; white-space:pre-wrap; box-sizing:border-box; #222; padding: 10px; margin-top: 5px; border-radius: 4px;">';
             echo nl2br(htmlspecialchars($value));
             echo '</div>';
         }
